@@ -2,7 +2,9 @@ import {
     combineReducers
 } from 'redux-immutable'
 import Login from './Login/reducer'
+import Dashboard from './Dashboard/reducer'
 import {fromJS} from 'immutable'
+import Forms from './Form/reducer'
 import {LOCATION_CHANGE} from 'react-router-redux'
 
 
@@ -19,7 +21,9 @@ function Routes(state = initialState, { type, payload } = {}) {
 
 const appReducer = combineReducers({
   Routes,
-  Login
+  Login,
+  Dashboard,
+  Forms
 })
 
 const rootReducer = (state, action) => {

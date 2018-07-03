@@ -1,13 +1,30 @@
 import React from 'react'
 import EventDashboard from './EventDashboard'
 import CanDashboard from './CanDashboard'
+import * as actions from '../actions'
+import { connect } from 'react-redux';
+import { List } from 'immutable';
 
 const FLAG = false
-export default class Dashboard extends React.Component {
+
+class Dashboard extends React.Component {
+
+  componentDidMount() {
+    this.props.FetchEvents()
+  }
 
   render() {
+    let {events} = this.props
     return (
-      FLAG ? <CanDashboard/> : <EventDashboard/>
+      FLAG ? <CanDashboard /> : <EventDashboard events={events} />
     )
   }
 }
+
+function mapStateToProps(state, props) {
+  return {
+    events: state.getIn(["Dashboard", "events"], List())
+  }
+}
+
+export default connect(mapStateToProps, actions)(Dashboard)
