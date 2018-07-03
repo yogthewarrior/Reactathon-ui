@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import Submission from './Submission'
+
 
 const style = {
     button: { margin: 12, backgroundColor: "#cd040b" }
@@ -122,7 +124,7 @@ class EventDetails extends Component {
                                     <div role="tabpanel" className="tab-pane" id="submission">
                                         <div className="design-process-content">
                                             <h3 className="semi-bold">Submission</h3>
-                                            <p>Submission</p>
+                                            <Submission/>
                                         </div>
                                     </div>
                                 </div>
