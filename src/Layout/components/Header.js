@@ -70,6 +70,7 @@ class Header extends Component {
 
           {this.props.loginId && (
             <div className='col-md-12' >
+              <div className='pull-left' onClick={() => {this.props.router.push('/mainPage')}}style={{fontSize : '20px'}}> <i class="fa fa-home" aria-hidden="true"></i> </div>
               <div className='pull-left'> <button type="submit" className="btn-danger pull-right" onClick={this.createEvent.bind(this)}>Create Event</button> </div>
               <div className='pull-right'> <button type="submit" className="btn-danger pull-right" onClick={this.logout.bind(this)}>Logout</button> </div>
               <div className='pull-right' style={{ marginRight: '15px' }} onClick={this.myProfile.bind(this)}><i class="fa fa-user circle-icon" aria-hidden="true"></i></div>
