@@ -7,7 +7,47 @@ module.exports = function (app) {
 
   app.post('/login', function (req, res) {
     // console.log("req...",req);
-    return utils.sendJSON(res, { data: "Login Success", username: req.body.username })
+    // return utils.sendJSON(res, { data: "Login Success", username: req.body.username })
+    return utils.sendJSON(res, {
+      "data": {
+        "users": {
+          "id": "87967",
+          "userID": "1",
+          "email": "ram.rockstar@gmail.com",
+          "name": "RamKumar",
+          "pwd": "!ASFHG5566%%%%33#==~^DF",
+          "status": "1",
+          "goldBadge": "23",
+          "silverBadge": "72",
+          "bronzeBadge": "12",
+          "achievements": {
+            "event": [
+              {
+                "eventName": "Reactathon"
+              }
+            ],
+            "rank": "2nd Prize"
+          },
+          "skills": [
+            {
+              "skillName": "React"
+            }
+          ],
+          "totalExp": "25 Years  2 Months",
+          "companies": [
+            "Verizon",
+            "JIO",
+            "GE",
+            "Google"
+          ],
+          "college": [
+            "IIT",
+            "IIM",
+            "IIS"
+          ]
+        }
+      }
+    })
   })
 
   app.get('/getevents', function (req, res) {

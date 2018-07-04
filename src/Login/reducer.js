@@ -14,6 +14,9 @@ export function Login (state = Map(), action) {
   case actions.LOGIN_REQUEST_FAILURE:
     return state.setIn(['errors'], fromJS(action.errors))
                 .setIn(["loginRequestLoading"], false)
+  case actions.LOG_OUT_USER:
+   console.log('---LOG_OUT_USER--LOG_OUT_USER-------')
+   return state.deleteIn(['Login'])
   default:
     return state
   }
