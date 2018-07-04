@@ -2,6 +2,26 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { List } from 'immutable'
 import Header from '../../Layout/components/Header'
+import { Pie } from 'react-chartjs-2';
+
+const data = {
+    labels: [
+        'You',
+        'Topper',
+    ],
+    datasets: [{
+        data: [48, 50],
+        backgroundColor: [
+            '#FF6384',
+            '#36A2EB'
+        ],
+        hoverBackgroundColor: [
+            '#FF6384',
+            '#36A2EB'
+        ]
+    }]
+};
+
 
 class profile extends Component {
 
@@ -16,7 +36,7 @@ class profile extends Component {
                     <Header />
                 </div>
                 <div className="row profile">
-                    <div className="col-md-3">
+                    <div className="col-md-2">
                         <div className="profile-sidebar">
                             <div className="profile-userpic">
                                 <img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="" />
@@ -62,7 +82,7 @@ class profile extends Component {
 
                         </div>
                     </div>
-                    <div className="col-md-9">
+                    <div className="col-md-6">
                         <div className="profile-content">
                             <div className='col-md-12 profile_border_bottom'>
                                 <div className='col-md-12 pull-left'> <h3>Skill</h3></div> <br />
@@ -87,6 +107,10 @@ class profile extends Component {
                             </div>
                         </div>
                     </div>
+                    <div className="col-md-4" style={{ marginTop: '40px' }}>
+                    <Pie data={data} />
+                    </div>
+
                 </div>
             </div >
         )
