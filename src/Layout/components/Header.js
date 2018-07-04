@@ -6,6 +6,7 @@ class Header extends Component {
 
   openLoginModal () {
     console.log('openLoginModal')
+    this.props.router.push('/')
   }
   
   myProfile () {

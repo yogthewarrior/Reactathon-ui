@@ -43,7 +43,7 @@ class profile extends Component {
                                             Account Settings </a>
                                     </li>
                                     <li>
-                                        <aonClick={this.toggle.bind(this,'Task')}>
+                                        <a onClick={this.toggle.bind(this,'Task')}>
                                             <i className="glyphicon glyphicon-ok"></i>
                                         Tasks </a>
                                     </li>
