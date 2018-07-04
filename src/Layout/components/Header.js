@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Modal from '../../Layout/components/Modal'
 import Login from '../../Login/components/login'
 import * as actions from '../../Login/actions'
+import hedaerImage from '../assets/header.jpg'
 
 
 const modalStyles = {
@@ -62,13 +63,18 @@ class Header extends Component {
   render() {
     console.log('userID...', this.props.loginId)
     return (
-      <div className='row'>
-        <div className='col-md-12' style={{ backgroundColor: '#ecebeb' }}>
-          {!this.props.loginId && (<div className='col-md-2'> <button type="submit" className="btn-danger pull-right" onClick={this.openLoginModal.bind(this)}>Login</button> </div>)}
+      <div className='row' style={{ backgroundImage: `url(${hedaerImage})`, backgroundColor: 'red' }}>
+        <div className='col-md-12' >
+
           {this.props.loginId && (
-            <div>
-              <div className='col-md-2'> <button type="submit" className="btn-danger pull-right" onClick={this.logout.bind(this)}>Logout</button> </div>
-              <div className="col-md-2 pull-right" onClick={this.myProfile.bind(this)}><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div className='col-md-12' >
+              <div className='pull-right'> <button type="submit" className="btn-danger pull-right" onClick={this.logout.bind(this)}>Logout</button> </div>
+              <div className='pull-right' style={{ marginRight: '15px' }} onClick={this.myProfile.bind(this)}><i class="fa fa-user circle-icon" aria-hidden="true"></i></div>
+            </div>
+          )}
+          {!this.props.loginId && (
+            <div className='col-md-12' >
+              <div className='pull-right'> <button type="submit" className="btn-danger pull-right" onClick={this.openLoginModal.bind(this)}>Login</button> </div>
             </div>
           )}
         </div>

@@ -42,28 +42,16 @@ class EventDetails extends Component {
         return row
     }
     triggerParticipate() {
-        console.log('triggerParticipate...  ', this.props.loginId)
-        // if (this.props.loginId !== '') {
-        //     console.log('Trigger ')
-        //     this.props.router.push('/')
-        // }else {
-        //     console.log('no no no ')
-        //     this.props.router.push('/')
-        // }
         this.setState({ isParticipated: true })
         
     }
 
     render() {
         let { data } = this.props
-        let limyClassName = 'active'
-        let tabmyClassName = 'tab-pane active'
-        // let limyClassName  = 'active'
-        // let tabmyClassName  = 'tab-pane active'
         return (
             <div>
                 <section className="design-process-section" id="process-tab">
-                    <div className="container">
+                    <div className="">
                         <div className="row">
                             <div className="col-xs-12">
 
