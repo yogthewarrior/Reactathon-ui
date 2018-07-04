@@ -17,9 +17,8 @@ class EventDetails extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            limyClassName: '',
-            tabmyClassName: '',
-            isParticipated: false
+            isSubmitted: false,
+            isParticipated: false,
         }
     }
 
@@ -41,9 +40,14 @@ class EventDetails extends Component {
         })
         return row
     }
+
     triggerParticipate() {
         this.setState({ isParticipated: true })
-        
+    }
+
+    submmitedCallBack() {
+        console.log('----isSubmitted-----')
+        this.setState({ isSubmitted: true })
     }
 
     render() {
@@ -68,12 +72,12 @@ class EventDetails extends Component {
                                     <li role="presentation"><a href="#registration" aria-controls="content" role="tab" data-toggle="tab"><i className="fa fa fa-check-square" aria-hidden="true"></i>
                                         <p>Registration</p>
                                     </a></li>
-                                   {this.props.loginId && (
-                                       <li role="presentation"><a href="#submission" aria-controls="content" role="tab" data-toggle="tab"><i className="fa fa fa-check-square" aria-hidden="true"></i>
-                                       <p>Submission</p>
-                                   </a></li>
-                                   ) }
-                                    
+                                    {this.props.loginId && (
+                                        <li role="presentation"><a href="#submission" aria-controls="content" role="tab" data-toggle="tab"><i className="fa fa fa-check-square" aria-hidden="true"></i>
+                                            <p>Submission</p>
+                                        </a></li>
+                                    )}
+
                                     <li role="presentation"><a href="#leader" aria-controls="content" role="tab" data-toggle="tab"><i className="fa fa fa-check-square" aria-hidden="true"></i>
                                         <p>leader</p>
                                     </a></li>
@@ -113,20 +117,22 @@ class EventDetails extends Component {
                                                 onClick={this.triggerParticipate.bind(this)}
                                             />
 
-                                            {this.state.isParticipated && (<div className='col-md-12' style={{ color: "green" }}> {this.props.loginId ?'All The best for your participation':'Please login'} </div>)}
+                                            {this.state.isParticipated && (<div className='col-md-12' style={{ color: "green" }}> {this.props.loginId ? 'All The best for your participation' : 'Please login'} </div>)}
 
                                         </div>
                                     </div>
                                     <div role="tabpanel" className="tab-pane" id="submission">
                                         <div className="design-process-content">
                                             <h3 className="semi-bold">Submission</h3>
-                                            <Submission />
+                                            {this.state.isSubmitted ? (<div style={{ color: 'green', fontSize: '20px' }}>  Submitted Successfully </div>) : ''}
+                                            <Submission submmitedCallBack={this.submmitedCallBack.bind(this)} />
+
                                         </div>
                                     </div>
                                     <div role="tabpanel" className="tab-pane" id="leader">
                                         <div className="design-process-content">
                                             <h3 className="semi-bold">leader</h3>
-                                            <LeaderBoard data ={data.get('leaderBoard')}/>
+                                            <LeaderBoard data={data.get('leaderBoard')} />
                                         </div>
                                     </div>
                                 </div>

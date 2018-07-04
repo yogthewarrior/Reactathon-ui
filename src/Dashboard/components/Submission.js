@@ -29,6 +29,7 @@ class Submission extends Component {
     onSubmit(e) {
         e.preventDefault()
         const fileData = this.aList.toJS()
+        this.props.submmitedCallBack()
         console.log('-----ETTS--------', fileData)
     }
 
