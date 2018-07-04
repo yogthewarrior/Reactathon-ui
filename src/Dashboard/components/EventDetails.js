@@ -9,7 +9,7 @@ import LeaderBoard from './LeaderBoard'
 const style = {
     button: { margin: 12, backgroundColor: "#cd040b" }
 }
-
+let DisplayText = 'All The best for your participation'
 class EventDetails extends Component {
     componentDidMount() {
     }
@@ -51,6 +51,7 @@ class EventDetails extends Component {
         //     this.props.router.push('/')
         // }
         this.setState({ isParticipated: true })
+        
     }
 
     render() {
@@ -79,9 +80,12 @@ class EventDetails extends Component {
                                     <li role="presentation"><a href="#registration" aria-controls="content" role="tab" data-toggle="tab"><i className="fa fa fa-check-square" aria-hidden="true"></i>
                                         <p>Registration</p>
                                     </a></li>
-                                    <li role="presentation"><a href="#submission" aria-controls="content" role="tab" data-toggle="tab"><i className="fa fa fa-check-square" aria-hidden="true"></i>
-                                        <p>Submission</p>
-                                    </a></li>
+                                   {this.props.loginId && (
+                                       <li role="presentation"><a href="#submission" aria-controls="content" role="tab" data-toggle="tab"><i className="fa fa fa-check-square" aria-hidden="true"></i>
+                                       <p>Submission</p>
+                                   </a></li>
+                                   ) }
+                                    
                                     <li role="presentation"><a href="#leader" aria-controls="content" role="tab" data-toggle="tab"><i className="fa fa fa-check-square" aria-hidden="true"></i>
                                         <p>leader</p>
                                     </a></li>
@@ -121,7 +125,7 @@ class EventDetails extends Component {
                                                 onClick={this.triggerParticipate.bind(this)}
                                             />
 
-                                            {this.state.isParticipated && (<div className='col-md-12' style={{ color: "green" }}> All The best for your participation </div>)}
+                                            {this.state.isParticipated && (<div className='col-md-12' style={{ color: "green" }}> {this.props.loginId ?'All The best for your participation':'Please login'} </div>)}
 
                                         </div>
                                     </div>
