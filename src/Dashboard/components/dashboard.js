@@ -2,8 +2,8 @@ import React from 'react'
 import EventDashboard from './EventDashboard'
 import CanDashboard from './CanDashboard'
 import * as actions from '../actions'
-import { connect } from 'react-redux';
-import { List } from 'immutable';
+import { connect } from 'react-redux'
+import { List } from 'immutable'
 
 const FLAG = false
 

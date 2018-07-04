@@ -1,10 +1,8 @@
 import React from 'react'
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
-import ContentAdd from 'material-ui/svg-icons/content/add'
 import * as actions from '../actions'
-import { connect } from 'react-redux';
-import { Map, List, fromJS } from 'immutable';
+import { connect } from 'react-redux'
 
 const style = {
   button: { margin: 12, backgroundColor: "#cd040b" }
@@ -80,7 +78,7 @@ export class Login extends React.Component {
 }
 
 function mapStateToProps(state, props) {
-  let loginId = state.getIn(["Login", "username"])
+  let loginId = state.getIn(["Login", "username"],'')
   let loginRequest = state.getIn(["Login", "loginRequest"], false)
   return {
     loginId,

@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { List } from 'immutable'
+import Header from '../../Layout/components/Header'
 
 class profile extends Component {
 
@@ -6,10 +9,12 @@ class profile extends Component {
     }
 
     render() {
+        let { profile } = this.props
         return (
-            <div className="container">
-
-
+            <div >
+                <div className='row'>
+                    <Header />
+                </div>
                 <div className="row profile">
                     <div className="col-md-3">
                         <div className="profile-sidebar">
@@ -18,8 +23,8 @@ class profile extends Component {
                             </div>
                             <div className="profile-usertitle">
                                 <div className="profile-usertitle-name">
-                                    Marcus Doe
-                            </div>
+                                    {profile.get('name')}
+                                </div>
                                 <div className="profile-usertitle-job">
                                     Developer
                             </div>
@@ -38,54 +43,65 @@ class profile extends Component {
                                             Overview </a>
                                     </li>
                                     <li>
-                                        <a  onClick={this.toggle.bind(this,'Account')}>
+                                        <a onClick={this.toggle.bind(this, 'Account')}>
                                             <i className="glyphicon glyphicon-user"></i>
                                             Account Settings </a>
                                     </li>
                                     <li>
-                                        <a onClick={this.toggle.bind(this,'Task')}>
+                                        <a onClick={this.toggle.bind(this, 'Task')}>
                                             <i className="glyphicon glyphicon-ok"></i>
-                                        Tasks </a>
+                                            Tasks </a>
                                     </li>
-                                <li>
-                                    <a onClick={this.toggle.bind(this, 'Help')}>
-                                        <i className="glyphicon glyphicon-flag"></i>
-                                        Help </a>
-                                </li>
+                                    <li>
+                                        <a onClick={this.toggle.bind(this, 'Help')}>
+                                            <i className="glyphicon glyphicon-flag"></i>
+                                            Help </a>
+                                    </li>
                                 </ul>
-                        </div>
+                            </div>
 
-                    </div>
-                </div>
-                <div className="col-md-9">
-                    <div className="profile-content">
-                        <div className='col-md-12 profile_border_bottom'>
-                            <div className='col-md-12 pull-left'> <h4>Skill</h4></div> <br />
-                            <div className='col-md-12 pull-left '>  Languages & Key Skills Java, Android, C, Linux, React Js, Node.Js, Cordova</div>
-                        </div>
-                        <div className='col-md-12 profile_border_bottom' style={{ marginTop: '10px' }}>
-                            <div className='col-md-12 pull-left'> <h4>Achievements</h4></div> <br />
-                            <div className="col-sm-6 col-lg-3 col-xs-6"><i><img src="https://static.techgig.com/Themes/Release/images/tg_images_new/Gold.svg" /></i>
-                                <p>Gold Badge <a className="tips" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="" rel="nofollow" data-original-title="Gold Badges can be earnt by participating in Skill Tests &amp; Challenges and earning score greater than 80"> &nbsp; </a></p>
-                                <span className="result">3</span></div>
-                            <div className="col-sm-6 col-lg-3 col-xs-6"><i><img src="https://static.techgig.com/Themes/Release/images/tg_images_new/Silver.svg" /></i>
-                                <p>Silver Badge <a className="tips" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="" rel="nofollow" data-original-title="Silver Badges can be earnt by participating in Skill Tests &amp; Challenges and earning score between 51 and 80"> &nbsp; </a></p>
-                                <span className="result">2</span></div>
-                            <div className="col-sm-6 col-lg-3 col-xs-6"><i><img src="https://static.techgig.com/Themes/Release/images/tg_images_new/Bronze.svg" /></i>
-                                <p>Bronze Badge <a className="tips" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="" rel="nofollow" data-original-title="Bronze Badges can be earnt by participating in Skill Tests &amp; Challenges and earning score between 31 and 50"> &nbsp; </a></p>
-                                <span className="result">3</span></div>
-                        </div>
-                        <div className='col-md-12 profile_border_bottom'>
-                            <div className='col-md-12 pull-left'> <h4>Work & Experiance</h4></div> <br />
-                            <div className='col-md-12 pull-left '>  Company : </div>
-                            <div className='col-md-12 pull-left '>  Years of Experiance : </div>
                         </div>
                     </div>
+                    <div className="col-md-9">
+                        <div className="profile-content">
+                            <div className='col-md-12 profile_border_bottom'>
+                                <div className='col-md-12 pull-left'> <h3>Skill</h3></div> <br />
+                                <div className='col-md-12 pull-left '>  {profile.get('skills')}</div>
+                            </div>
+                            <div className='col-md-12 profile_border_bottom' style={{ marginTop: '10px' }}>
+                                <div className='col-md-12 pull-left'> <h3>Achievements</h3></div> <br />
+                                <div className="col-sm-6 col-lg-3 col-xs-6"><i><img src="https://static.techgig.com/Themes/Release/images/tg_images_new/Gold.svg" /></i>
+                                    <p>Gold Badge <a className="tips" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="" rel="nofollow" data-original-title="Gold Badges can be earnt by participating in Skill Tests &amp; Challenges and earning score greater than 80"> &nbsp; </a></p>
+                                    <span className="result"> <strong>{profile.get('goldBadge')}</strong></span></div>
+                                <div className="col-sm-6 col-lg-3 col-xs-6"><i><img src="https://static.techgig.com/Themes/Release/images/tg_images_new/Silver.svg" /></i>
+                                    <p>Silver Badge <a className="tips" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="" rel="nofollow" data-original-title="Silver Badges can be earnt by participating in Skill Tests &amp; Challenges and earning score between 51 and 80"> &nbsp; </a></p>
+                                    <span className="result"> <strong>{profile.get('silverBadge')}</strong></span></div>
+                                <div className="col-sm-6 col-lg-3 col-xs-6"><i><img src="https://static.techgig.com/Themes/Release/images/tg_images_new/Bronze.svg" /></i>
+                                    <p>Bronze Badge <a className="tips" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="" rel="nofollow" data-original-title="Bronze Badges can be earnt by participating in Skill Tests &amp; Challenges and earning score between 31 and 50"> &nbsp; </a></p>
+                                    <span className="result"> <strong>{profile.get('bronzeBadge')}</strong> </span></div>
+                            </div>
+                            <div className='col-md-12 profile_border_bottom'>
+                                <div className='col-md-12 pull-left'> <h3>Work & Experiance</h3></div> <br />
+                                <div className='col-md-12 pull-left '>  <strong>Company`s Worked : </strong>{profile.get('companies')}</div>
+                                <div className='col-md-12 pull-left '>  <strong> Years of Experiance : </strong> {profile.get('totalExp')}</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
             </div >
         )
     }
 }
 
-export default profile
+function mapStateToProps(state, props) {
+    let loginId = state.getIn(["Login", "username"], '')
+    let loginRequest = state.getIn(["Login", "loginRequest"], false)
+    return {
+        loginId,
+        loginRequest,
+        loginRequestLoading: state.getIn(["Login", "loginRequestLoading"]),
+        profile: state.getIn(["Login", "loginStatus"], List()),
+    }
+}
+
+export default connect(mapStateToProps, null)(profile)

@@ -28,18 +28,9 @@ module.exports = function (app) {
             ],
             "rank": "2nd Prize"
           },
-          "skills": [
-            {
-              "skillName": "React"
-            }
-          ],
+          "skills": "Java, Android, C, Linux, React Js, Node.Js, Cordova",
           "totalExp": "25 Years  2 Months",
-          "companies": [
-            "Verizon",
-            "JIO",
-            "GE",
-            "Google"
-          ],
+          "companies": "Verizon, JIO, GE, Google",
           "college": [
             "IIT",
             "IIM",
