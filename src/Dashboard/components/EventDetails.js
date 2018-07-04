@@ -3,6 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import Submission from './Submission'
+import LeaderBoard from './LeaderBoard'
 
 
 const style = {
@@ -13,14 +14,14 @@ class EventDetails extends Component {
     componentDidMount() {
     }
 
-    constructor (props) {
+    constructor(props) {
         super(props)
         this.state = {
             limyClassName: '',
-            tabmyClassName : '',
-            isParticipated : false
-          }
-      }
+            tabmyClassName: '',
+            isParticipated: false
+        }
+    }
 
 
     constructDeliverables(data) {
@@ -41,7 +42,7 @@ class EventDetails extends Component {
         return row
     }
     triggerParticipate() {
-        console.log('triggerParticipate...  ',this.props.loginId)
+        console.log('triggerParticipate...  ', this.props.loginId)
         // if (this.props.loginId !== '') {
         //     console.log('Trigger ')
         //     this.props.router.push('/')
@@ -49,13 +50,13 @@ class EventDetails extends Component {
         //     console.log('no no no ')
         //     this.props.router.push('/')
         // }
-        this.setState({isParticipated : true})
+        this.setState({ isParticipated: true })
     }
 
     render() {
         let { data } = this.props
-        let limyClassName  = 'active'
-        let tabmyClassName  = 'tab-pane active'
+        let limyClassName = 'active'
+        let tabmyClassName = 'tab-pane active'
         // let limyClassName  = 'active'
         // let tabmyClassName  = 'tab-pane active'
         return (
@@ -80,6 +81,9 @@ class EventDetails extends Component {
                                     </a></li>
                                     <li role="presentation"><a href="#submission" aria-controls="content" role="tab" data-toggle="tab"><i className="fa fa fa-check-square" aria-hidden="true"></i>
                                         <p>Submission</p>
+                                    </a></li>
+                                    <li role="presentation"><a href="#leader" aria-controls="content" role="tab" data-toggle="tab"><i className="fa fa fa-check-square" aria-hidden="true"></i>
+                                        <p>leader</p>
                                     </a></li>
                                 </ul>
 
@@ -117,14 +121,20 @@ class EventDetails extends Component {
                                                 onClick={this.triggerParticipate.bind(this)}
                                             />
 
-                                           {this.state.isParticipated && (<div className='col-md-12' style={{color :"green"}}> All The best for your participation </div>)}
-                                            
+                                            {this.state.isParticipated && (<div className='col-md-12' style={{ color: "green" }}> All The best for your participation </div>)}
+
                                         </div>
                                     </div>
                                     <div role="tabpanel" className="tab-pane" id="submission">
                                         <div className="design-process-content">
                                             <h3 className="semi-bold">Submission</h3>
-                                            <Submission/>
+                                            <Submission />
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" className="tab-pane" id="leader">
+                                        <div className="design-process-content">
+                                            <h3 className="semi-bold">leader</h3>
+                                            <LeaderBoard data ={data.get('leaderBoard')}/>
                                         </div>
                                     </div>
                                 </div>
@@ -138,11 +148,11 @@ class EventDetails extends Component {
 }
 
 
-function mapStateToProps(state,props){
-    let loginId = state.getIn(["Login","username"],'')
-   return{
-     loginId
-   }
-  }
-  
-  export default withRouter(connect(mapStateToProps,null)(EventDetails))
+function mapStateToProps(state, props) {
+    let loginId = state.getIn(["Login", "username"], '')
+    return {
+        loginId
+    }
+}
+
+export default withRouter(connect(mapStateToProps, null)(EventDetails))
