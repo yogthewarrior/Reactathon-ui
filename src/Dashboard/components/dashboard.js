@@ -11,6 +11,7 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     this.props.FetchEvents()
+    this.props.FetchComments()
   }
 
   render() {

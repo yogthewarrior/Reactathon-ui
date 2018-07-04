@@ -41,6 +41,27 @@ module.exports = function (app) {
     })
   })
 
+  app.get('/getcomments', function (req, res) {
+    // console.log("req...",req);
+    // return utils.sendJSON(res, { data: "Login Success", username: req.body.username })
+    return utils.sendJSON(res, {
+      data: {
+        alldiscussions: [
+          {
+            user: "name",
+            dated: "dated",
+            Qus: "Qus"
+          },
+          {
+            user: "name",
+            dated: "dated",
+            Qus: "Qus"
+          }
+        ]
+      }
+    })
+  })
+
   app.get('/getevents', function (req, res) {
 
     return utils.sendJSON(res,

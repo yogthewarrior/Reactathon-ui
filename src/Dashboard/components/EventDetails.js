@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import Submission from './Submission'
 import LeaderBoard from './LeaderBoard'
+import Discussion from './Discussion'
+import { List } from 'immutable'
 
 
 const style = {
@@ -51,7 +53,8 @@ class EventDetails extends Component {
     }
 
     render() {
-        let { data } = this.props
+        let { data , comments} = this.props
+        console.log('--comments--',comments)
         return (
             <div>
                 <section className="design-process-section" id="process-tab">
@@ -79,7 +82,10 @@ class EventDetails extends Component {
                                     )}
 
                                     <li role="presentation"><a href="#leader" aria-controls="content" role="tab" data-toggle="tab"><i className="fa fa fa-check-square" aria-hidden="true"></i>
-                                        <p>leader</p>
+                                        <p>Leader</p>
+                                    </a></li>
+                                    <li role="presentation"><a href="#discussion" aria-controls="content" role="tab" data-toggle="tab"><i className="fa fa fa-check-square" aria-hidden="true"></i>
+                                        <p>Discussion</p>
                                     </a></li>
                                 </ul>
 
@@ -135,6 +141,12 @@ class EventDetails extends Component {
                                             <LeaderBoard data={data.get('leaderBoard')} />
                                         </div>
                                     </div>
+                                    <div role="tabpanel" className="tab-pane" id="discussion">
+                                        <div className="design-process-content">
+                                            <h3 className="semi-bold">Discussion</h3>
+                                            <Discussion data={comments} />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -149,7 +161,8 @@ class EventDetails extends Component {
 function mapStateToProps(state, props) {
     let loginId = state.getIn(["Login", "username"], '')
     return {
-        loginId
+        loginId,
+        comments : state.getIn(["Dashboard", "comments"], List())
     }
 }
 
