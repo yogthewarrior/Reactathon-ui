@@ -42,7 +42,6 @@ class Header extends Component {
   }
 
   logout() {
-    console.log('----logout----')
     this.props.logOutUser()
   }
 
@@ -55,19 +54,23 @@ class Header extends Component {
   }
 
   myProfile() {
-    console.log('myProfile')
     this.props.router.push('/profile')
+  }
+
+  createEvent() {
+    this.props.router.push('/create')
   }
 
 
   render() {
     console.log('userID...', this.props.loginId)
     return (
-      <div className='row' style={{ backgroundImage: `url(${hedaerImage})`, backgroundColor: 'red' }}>
+      <div className='row' style={{ backgroundColor: 'lightgray' }}>
         <div className='col-md-12' >
 
           {this.props.loginId && (
             <div className='col-md-12' >
+              <div className='pull-left'> <button type="submit" className="btn-danger pull-right" onClick={this.createEvent.bind(this)}>Create Event</button> </div>
               <div className='pull-right'> <button type="submit" className="btn-danger pull-right" onClick={this.logout.bind(this)}>Logout</button> </div>
               <div className='pull-right' style={{ marginRight: '15px' }} onClick={this.myProfile.bind(this)}><i class="fa fa-user circle-icon" aria-hidden="true"></i></div>
             </div>

@@ -4,10 +4,19 @@ import TextField from 'material-ui/TextField'
 import { connect } from "react-redux"
 import { List } from "immutable"
 import RaisedButton from 'material-ui/RaisedButton'
+import Submission from './Submission'
 
 const formName = "RegistrationForm"
 
 class RegistrationForm extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            isSubmitted: false
+        }
+    }
+
     setValue(field, value) {
         this.props.setValue(formName, field, value)
     }
@@ -15,28 +24,43 @@ class RegistrationForm extends Component {
     onSubmit(e) {
         e.preventDefault()
         console.log("Submit data############################" + JSON.stringify(this.props.currentValues.toJS()))
+        this.setState({isSubmitted : true})
+    }
+
+    submmitedCallBack() {
+        
     }
 
     render() {
         let { currentValues } = this.props
         return (
-            <div>
-                RegistrationForm
                 <form onSubmit={this.onSubmit.bind(this)} className="float-label">
+                {this.state.isSubmitted ? (<div style={{ color: 'green', fontSize: '20px' }}>  Submitted Successfully! </div>) : ''}
                     <TextField
-                        floatingLabelText="Team Name"
-                        value={currentValues.get("teamName")} onChange={e => this.setValue("teamName", e.target.value)} required
+                        floatingLabelText="Event Name"
+                        value={currentValues.get("eventName")} onChange={e => this.setValue("eventName", e.target.value)} required
                         inputStyle={{ color: '#333', fontSize: 14, fontFamily: 'Arial, Helvetica, sans-serif' }}
                         fullWidth={true} />
 
                     <TextField
-                        floatingLabelText="Mobile No" type="number"
-                        value={currentValues.get("mobileNo")} onChange={e => this.setValue("mobileNo", e.target.value)} required
+                        floatingLabelText="Event Category" 
+                        value={currentValues.get("event_ctr")} onChange={e => this.setValue("event_ctr", e.target.value)} required
                         inputStyle={{ color: '#333', fontSize: 14, fontFamily: 'Arial, Helvetica, sans-serif' }}
                         fullWidth={true} />
-                    <button type="submit" className="btn-danger pull-right">Submit</button>
+
+                    <TextField
+                        floatingLabelText="Discription" 
+                        value={currentValues.get("event_ctr")} onChange={e => this.setValue("event_ctr", e.target.value)} required
+                        inputStyle={{ color: '#333', fontSize: 14, fontFamily: 'Arial, Helvetica, sans-serif' }}
+                        fullWidth={true} />
+                   
+                    <TextField
+                        floatingLabelText="Summary" 
+                        value={currentValues.get("event_ctr")} onChange={e => this.setValue("event_ctr", e.target.value)} required
+                        inputStyle={{ color: '#333', fontSize: 14, fontFamily: 'Arial, Helvetica, sans-serif' }}
+                        fullWidth={true} />
+                        <Submission submmitedCallBack={this.submmitedCallBack.bind(this)}/>
                 </form>
-            </div>
         )
     }
 }
