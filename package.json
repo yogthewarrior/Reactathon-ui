@@ -136,6 +136,6 @@
     "react": "node_modules/.bin/webpack-dev-server --hot",
     "server": "node server/server.js"
   },
-  "author": "Verizon",
+  "author": "Yogesh",
   "license": "ISC"
 }

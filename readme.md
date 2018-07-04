@@ -58,6 +58,6 @@ The application's main entry point is `src/index.js`. This will render/run the w
 
 [React-router](https://github.com/reactjs/react-router) is used to handle routing to different components based on the current url. All of the application's routes are located in `src/routes.js`. The router maps the path's to React components.
 
-React components can be found in the `components` directory of the major sections of the app. For example, all React components for alarms are located in `src/Alarms/components`.
+React components can be found in the `components` directory of the major sections of the app. For example, all React components for alarms are located in `src/<NAME>/components`.
 
 Redux is used to hold all of the application's state/data. Redux does this by holding all of the data in a single javascript object inside of it's `store`. This object is manipulated by sending in [action objects](http://redux.js.org/docs/basics/Actions.html). [Functions called "reducers"](http://redux.js.org/docs/basics/Reducers.html) are responsible for inspecting these action objects and actually manipulating the state. Actions and reducers are broken out into separate files for each of the app's major sections and are located on the same level as the `components` directory.
