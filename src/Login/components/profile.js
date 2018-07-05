@@ -31,11 +31,11 @@ class profile extends Component {
     render() {
         let { profile } = this.props
         return (
-            <div >
-                <div className='row'>
+            <div className='row'>
+                <div className='col-md-12'>
                     <Header />
                 </div>
-                <div className="row profile">
+                <div className="col-md-12 profile">
                     <div className="col-md-2">
                         <div className="profile-sidebar">
                             <div className="profile-userpic">
