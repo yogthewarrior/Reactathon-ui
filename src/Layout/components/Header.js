@@ -65,13 +65,14 @@ class Header extends Component {
   render() {
     console.log('userID...', this.props.loginId)
     return (
-      <div className='row' style={{ backgroundColor: 'lightgray' }}>
+      <div className='row' style={{ backgroundColor: 'white' }}>
         <div className='col-md-12' >
+        <div className='col-md-12 header_bg' >REACTATHON</div>
 
           {this.props.loginId && (
-            <div className='col-md-12' >
+            <div className='col-md-12' style={{ padding: '10px', borderBottom : '1px solid black' }}>
               <div className='pull-left' onClick={() => {this.props.router.push('/mainPage')}}style={{fontSize : '20px'}}> <i class="fa fa-home" aria-hidden="true"></i> </div>
-              <div className='pull-left'> <button type="submit" className="btn-danger pull-right" onClick={this.createEvent.bind(this)}>Create Event</button> </div>
+              <div className='pull-left' style={{marginLeft: '15px'}}> <button type="submit" className="btn-danger pull-right" onClick={this.createEvent.bind(this)}>Create Event</button> </div>
               <div className='pull-right'> <button type="submit" className="btn-danger pull-right" onClick={this.logout.bind(this)}>Logout</button> </div>
               <div className='pull-right' style={{ marginRight: '15px' }} onClick={this.myProfile.bind(this)}><i class="fa fa-user circle-icon" aria-hidden="true"></i></div>
             </div>
